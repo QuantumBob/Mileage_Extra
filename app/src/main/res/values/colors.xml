@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="red">#c93939</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="mileage_accent_material_dark">#4d6a4d</color>
+    <color name="mileage_accent_material_light">#81af80</color>
+    <color name="button_pressed">#606060</color>
+    <color name="button_focused">#606060</color>
+    <color name="button_default">#a7a7a7</color>
+    <color name="white">#ffffff</color>
+</resources>

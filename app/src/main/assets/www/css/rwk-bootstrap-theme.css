@@ -1,0 +1,19 @@
+.canvas-border-rwk {
+  border: 3px solid black;
+}
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+input[type=date]::-webkit-clear-button {
+    -webkit-appearance: none;
+    display: none;
+}
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+.toggle.rwk {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}

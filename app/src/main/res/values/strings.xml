@@ -1,0 +1,58 @@
+<resources>
+    <string name="appName">Mileage App</string>
+    <string name="title">Mileage</string>
+    <string name="date">Date</string>
+    <string name="startMiles">Start Miles</string>
+    <string name="endMiles">End Miles</string>
+    <string name="fuelBought">Fuel Bought</string>
+    <string name="priceUnit"> Price per Unit</string>
+    <string name="mileageLabel">Mileage = </string>
+    <string name="unitToggle">Litres</string>
+    <string name="commitButton">Commit</string>
+    <string name="clearButton">Clear</string>
+    <string name="cancelButton">Cancel</string>
+    <string name="updateButton">Update</string>
+    <string name="deleteButton">Delete</string>
+    <string name="mileage"></string>
+    <string name="unitOff">Litres</string>
+    <string name="unitOn">Gallons</string>
+    <string name="mileageValue"></string>
+    <string name="deliveries">Deliveries</string>
+    <string name="NumHeading">Num</string>
+    <string name="PriceHeading">Price</string>
+    <string name="TipHeading">Tip</string>
+    <string name="LocalHeading">Local</string>
+    <string name="ExtraHeading">Extra</string>
+    <string name="WageHeading">Wage</string>
+    <string name="ShopHeading">Shop</string>
+
+    <string name="TicketNumText">%2d</string>
+    <string name="PriceText">£%.2f</string>
+    <string name="TipText">£%.2f</string>
+    <string name="totalPrice">£%.2f</string>
+    <string name="totalTip">£%.2f</string>
+    <string name="totalWage">£%.2f</string>
+    <string name="totalShop">£%.2f</string>
+
+    <string name="number">number</string>
+    <string name="edit_delivery_access">Edit this delivery</string>
+    <string name="edit_heading">Edit</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dialog_update">UPDATE</string>
+    <string name="dialog_cancel">CANCEL</string>
+    <string name="ticket_id">id</string>
+    <string name="dialog_delete">DELETE</string>
+    <string name="cancel">Cancel</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="commit">Commit</string>
+    <string name="clear">Clear</string>
+    <string name="mpl">mpl</string>
+    <string name="mpg">mpg</string>
+    <string name="startHint">Start...</string>
+    <string name="endHint">End...</string>
+    <string name="fuelHint">Fuel...</string>
+    <string name="priceHint">Price...</string>
+</resources>

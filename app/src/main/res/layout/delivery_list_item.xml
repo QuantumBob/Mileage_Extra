@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linear_non_edit"
+    style="@style/list_spacing"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/text_view_border">
+
+    <TextView
+        android:id="@+id/delivery_list_item_id_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:tag="Recycler num"
+        tools:text="Num"
+        />
+
+    <TextView
+        android:id="@+id/delivery_list_item_num_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:longClickable="true"
+        android:paddingEnd="0dp"
+        android:paddingLeft="@dimen/num_text_view_padding_horizontal"
+        android:paddingRight="0dp"
+        android:paddingStart="@dimen/num_text_view_padding_horizontal"
+        android:tag="Recycler num"
+        tools:text="Num"
+        />
+
+    <TextView
+        android:id="@+id/delivery_list_item_price_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:tag="Recycler price"
+        tools:text="Delivery Price"
+        />
+
+
+    <TextView
+        android:id="@+id/delivery_list_item_tip_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:tag="Recycler tip"
+        tools:text="Delivery Tip"
+        />
+
+
+    <CheckBox
+        android:id="@+id/delivery_list_item_local_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:clickable="false"
+        android:tag="Recycler local"
+        />
+
+</LinearLayout>

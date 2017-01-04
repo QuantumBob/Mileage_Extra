@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="./lib/bootstrap/dist/css/bootstrap.min.css">
+        <title>Mileage Calculator Beta</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+        <!-- <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1"> -->
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
+
+        <style>
+            /* following three (cascaded) are equivalent to above three meta viewport statements */
+            /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
+            /* see http://dev.w3.org/csswg/css-device-adapt/ */
+                @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+                @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+                /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+        </style>
+
+        <!-- css -->
+        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" href="css/rwk-devtools.css">
+        <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+        <link rel="stylesheet" href="./lib/bootstrap-toggle/css/bootstrap-toggle.min.css">
+
+
+        <!-- scripts -->
+        <script src="./lib/jquery/dist/jquery.js"></script>
+        <script src="./lib/localforage/localforage.min.js"></script>
+        <script src="lib/localforage/localforage-startswith.es6.js"></script>
+        <script src="lib/localforage/localforage-removeitems.es6.js"></script>
+        <script src="./lib/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="./lib/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
+        <script src="./lib/chart.js/dist/Chart.min.js"></script>
+        <script src="./lib/hammerjs/hammer.min.js"></script>
+        <script src="./lib/moment/moment.js"></script>
+        <!--script src="lib/Chart.Zoom.js"></script-->
+        <script src="Mileage.js"></script>
+        <script src="js/rwk-devtools.js"></script>
+    </head>
+
+    <body>
+        <div class="upage vertical-col left" id="mainpage">
+            <h1>Mileage</h1>
+            <!--button class="btn widget d-margins rwk-dev-width button_padding btn-default" data-uib="twitter%20bootstrap/button" data-ver="1" id="btnDump">Dump</button-->
+
+            <br>
+            <div class="grid grid-pad urow uib_row_1 row-height-1" data-uib="layout/row" data-ver="0">
+                <div class="col uib_col_1 col-0_12-12" data-uib="layout/col" data-ver="0">
+                    <div class="widget-container content-area vertical-col center">
+                        <div class="table-thing widget d-margins label_txt date_text num_input rwk-width rwk-centre-col" data-uib="twitter%20bootstrap/input" data-ver="1">
+                            <label class="narrow-control label-top-left" for="miles_date">Date</label>
+                            <input class="wide-control form-control default" type="date" id="miles_date">
+                        </div>
+                        <div class="sbs-container widget d-margins rwk-sidebyside rwk-sidebyside-width" data-uib="layout/side_by_side" data-ver="0">
+                            <div class="leftContent widget-container">
+                                <div class="table-thing widget d-margins label_txt num_input" data-uib="twitter%20bootstrap/input" data-ver="1">
+
+                                    <label class="narrow-control label-top-left" for="start_miles">Start miles</label>
+                                    <input class="wide-control form-control default calc-miles" type="number" min="0" id="start_miles">
+                                </div>
+                            </div>
+                            <div class="rightContent widget-container">
+                                <div class="table-thing widget d-margins label_txt num_input" data-uib="twitter%20bootstrap/input" data-ver="1">
+                                    <label class="narrow-control label-top-left" for="end_miles">End miles</label>
+                                    <input class="wide-control form-control default calc-miles" type="number" min="0" id="end_miles">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-thing widget d-margins label_txt num_input rwk-width" data-uib="twitter%20bootstrap/input" data-ver="1">
+                            <label class="narrow-control label-top-left" for="fuel_bought">Fuel bought (£)</label>
+                            <input class="wide-control form-control default calc-miles" type="number" id="fuel_bought" min="0">
+                        </div>
+                        <div class="table-thing widget d-margins num_input label_txt rwk-width" data-uib="twitter%20bootstrap/input" data-ver="1">
+                            <label class="narrow-control label-top-left" for="price_unit">Price per litre</label>
+                            <input class="wide-control form-control default calc-miles" type="number" id="price_unit" min="0">
+                        </div>
+                        <div class="tarea widget d-margins" data-uib="media/text" data-ver="0" name="uib_w_9">
+                            <div class="widget-container left-receptacle"></div>
+                            <div class="widget-container right-receptacle"></div>
+                            <div class="text-container">
+                                <span><label>Mileage =&nbsp;</label><label id="result"></label><label id="mpu">&nbsp;mpl</label></span>
+                            </div>
+                        </div>
+                        <label class="checkbox checkbox-padding-left widget d-margins" data-uib="twitter%20bootstrap/checkbox" data-ver="1">
+                            <input type="checkbox" checked="checked" value="litres" data-toggle="toggle" data-on="Litres" data-off="Gallons" data-onstyle="primary" data-offstyle="info" data-width="200" id="units" name="UNITS!">
+                        </label><span class="uib_shim"></span>
+                    </div>
+                </div>
+                <span class="uib_shim"></span>
+            </div>
+
+            <div class="sbs-container widget d-margins" data-uib="layout/side_by_side" data-ver="0">
+                <div class="leftContent widget-container">
+                    <button class="btn widget d-margins button-width button_padding btn-default" data-uib="twitter%20bootstrap/button" data-ver="1" id="btnClear">Clear</button>
+                </div>
+                <div class="rightContent widget-container">
+                    <button id="btnCommit" class=" widget d-margins button_padding button-width btn-default" data-uib="twitter%20bootstrap/button" data-ver="1">Commit</button>
+                </div>
+            </div>
+            <div class="btn-group uib-bs-flex widget uib_w_11 d-margins rwk-centre-col" data-uib="twitter%20bootstrap/button_group" data-ver="1" id="btn-grp-Edit">
+                <button class="btn widget uib_w_12 button-width btn-default" data-uib="twitter%20bootstrap/button" data-ver="1" id="btnCancel">Cancel</button>
+                <button class="btn widget uib_w_13 btn-default button-width" data-uib="twitter%20bootstrap/button" data-ver="1" id="btnEdit">Edit</button>
+                <button class="btn widget uib_w_14 btn-default" data-uib="twitter%20bootstrap/button" data-ver="1" id="btnDelete">Delete</button>
+            </div>
+            <br>
+            <div class="widget uib_w_10 charts-size d-margins canvas-border" data-uib="media/chartjs" data-ver="0" data-chart-type="Bar" data-chart-func="miles.mileageData" id="mileage-chart"></div>
+        </div>
+
+    </body>
+
+</html>

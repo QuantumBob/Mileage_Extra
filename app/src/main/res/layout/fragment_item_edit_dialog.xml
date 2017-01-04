@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/list_spacing"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/text_view_border"
+
+    android:gravity="center">
+
+    <!--RecyclerView column headings-->
+    <RelativeLayout
+        android:id="@+id/row_heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/text_view_padding_horizontal"
+        android:orientation="horizontal"
+        style="@style/list_spacing">
+
+        <TextView
+            android:id="@+id/delivery_list_item_num_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/NumHeading"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:paddingLeft="@dimen/num_text_view_padding_horizontal"
+            android:paddingRight="@dimen/num_text_view_padding_horizontal"
+            android:minWidth="60dp"
+            />
+        <TextView
+            android:id="@+id/delivery_list_item_price_heading"
+            android:text="@string/PriceHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_toRightOf="@id/delivery_list_item_num_heading"
+            android:layout_toEndOf="@id/delivery_list_item_num_heading"
+            android:paddingLeft="@dimen/num_text_view_padding_horizontal"
+            android:paddingRight="@dimen/num_text_view_padding_horizontal"
+            android:minWidth="60dp"
+            />
+        <TextView
+            android:id="@+id/delivery_list_item_tip_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_toRightOf="@id/delivery_list_item_price_heading"
+            android:layout_toEndOf="@id/delivery_list_item_price_heading"
+            android:text="@string/TipHeading"
+            android:paddingLeft="@dimen/text_size_small"
+            android:paddingRight="@dimen/text_size_small"
+            android:minWidth="60dp"
+            />
+        <TextView
+            android:id="@+id/delivery_list_item_extra_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/delivery_list_item_tip_heading"
+            android:layout_toEndOf="@id/delivery_list_item_tip_heading"
+            android:text="@string/ExtraHeading"
+            android:paddingLeft="@dimen/num_text_view_padding_horizontal"
+            android:paddingRight="@dimen/num_text_view_padding_horizontal"
+            android:minWidth="60dp"
+            />
+
+        <EditText
+            android:id="@+id/delivery_list_new_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:hint="@string/ticket_id"
+            />
+        <EditText
+            android:id="@+id/delivery_list_new_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/delivery_list_item_num_heading"
+            android:layout_alignLeft="@id/delivery_list_item_num_heading"
+            android:layout_alignStart="@id/delivery_list_item_num_heading"
+            android:layout_alignRight="@id/delivery_list_item_num_heading"
+            android:layout_alignEnd="@id/delivery_list_item_num_heading"
+            android:inputType="numberDecimal"
+            android:textSize="@dimen/text_size_medium"
+            android:minWidth="10dp"
+            android:hint="@string/NumHeading"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:tag="Num Edit"
+            android:paddingLeft="@dimen/num_text_view_padding_horizontal"
+            android:paddingRight="@dimen/num_text_view_padding_horizontal"
+            />
+        <EditText
+            android:id="@+id/delivery_list_new_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/delivery_list_item_price_heading"
+            android:layout_alignLeft="@id/delivery_list_item_price_heading"
+            android:layout_alignStart="@id/delivery_list_item_price_heading"
+            android:layout_alignRight="@id/delivery_list_item_price_heading"
+            android:layout_alignEnd="@id/delivery_list_item_price_heading"
+            android:inputType="number"
+            android:hint="@string/PriceHeading"
+            android:textSize="@dimen/text_size_medium"
+            android:minWidth="10dp"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:tag="Price edit"
+            android:paddingLeft="@dimen/num_text_view_padding_horizontal"
+            android:paddingRight="@dimen/num_text_view_padding_horizontal"
+            />
+        <EditText
+            android:id="@+id/delivery_list_new_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/delivery_list_item_tip_heading"
+            android:layout_alignLeft="@id/delivery_list_item_tip_heading"
+            android:layout_alignStart="@id/delivery_list_item_tip_heading"
+            android:layout_alignRight="@id/delivery_list_item_tip_heading"
+            android:layout_alignEnd="@id/delivery_list_item_tip_heading"
+            android:inputType="number"
+            android:textSize="@dimen/text_size_medium"
+            android:maxLines="1"
+            android:minWidth="10dp"
+            android:hint="@string/TipHeading"
+            android:tag="tip edit"
+            android:paddingLeft="@dimen/num_text_view_padding_horizontal"
+            android:paddingRight="@dimen/num_text_view_padding_horizontal"
+            />
+        <EditText
+            android:id="@+id/delivery_list_new_extra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/delivery_list_item_extra_heading"
+            android:layout_alignLeft="@id/delivery_list_item_extra_heading"
+            android:layout_alignStart="@id/delivery_list_item_extra_heading"
+            android:layout_alignRight="@id/delivery_list_item_extra_heading"
+            android:layout_alignEnd="@id/delivery_list_item_extra_heading"
+            android:inputType="number"
+            android:textSize="@dimen/text_size_medium"
+            android:maxLines="1"
+            android:minWidth="10dp"
+            android:hint="@string/ExtraHeading"
+            android:nextFocusDown="@id/delivery_list_new_num"
+            android:tag="extra edit"
+            android:paddingLeft="@dimen/num_text_view_padding_horizontal"
+            android:paddingRight="@dimen/num_text_view_padding_horizontal"
+            />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/row_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        style="?android:buttonBarStyle"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/dialog_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_update"
+            android:background="@drawable/button_background"
+            style="@style/rwk_button"
+            />
+
+        <Button
+            android:id="@+id/dialog_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_delete"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="2dp"
+            android:background="@drawable/button_background"
+            style="@style/rwk_button"
+            />
+
+        <Button
+            android:id="@+id/dialog_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_cancel"
+            android:background="@drawable/button_background"
+            style="@style/rwk_button"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

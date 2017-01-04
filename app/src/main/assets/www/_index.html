@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!--meta http-equiv="Content-type" content="text/html; charset=utf-8"-->
+      <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=1, user-scalable=no">
+      <!--meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1"-->
+      <!--meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"-->
+
+      <title>Mileage Calculator Beta</title>
+
+      <style>
+          /* following three (cascaded) are equivalent to above three meta viewport statements */
+          /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
+          /* see http://dev.w3.org/csswg/css-device-adapt/ */
+              @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+              @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+              /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+      </style>
+
+      <!-- css -->
+      <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/rwk-bootstrap-theme.css">
+      <link rel="stylesheet" href="css/rwk-devtools.css">
+      <!--link rel="stylesheet" href="css/app.css">
+      <link rel="stylesheet" href="css/rwk-devtools.css">
+      <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less"-->
+      <link rel="stylesheet" href="./lib/bootstrap-toggle/css/bootstrap-toggle.min.css">
+
+      <!-- scripts -->
+      <script src="./lib/jquery/dist/jquery.js"></script>
+      <script src="./lib/localforage/localforage.min.js"></script>
+      <script src="./lib/localforage/localforage-startswith.js"></script>
+      <script src="./lib/localforage/localforage-removeitems.js"></script>
+      <script src="./lib/localforage/localforage-getitems.js"></script>
+      <script src="./lib/bootstrap/dist/js/bootstrap.min.js"></script>
+      <script src="./lib/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
+      <script src="./lib/chart.js/dist/Chart.min.js"></script>
+      <script src="./lib/hammerjs/hammer.min.js"></script>
+      <script src="./lib/moment/moment.js"></script>
+      <!--script src="lib/Chart.Zoom.js"></script-->
+      <script src="Mileage.js"></script>
+      <script src="js/rwk-devtools.js"></script>
+  </head>
+
+  <body>
+    <div class="container-fluid text-center">
+      <div class="row" id="mainpage">
+        <h1><strong>Mileage</strong></h1>
+
+        <div class="col-xs-12">
+          <label class="" for="date">Date</label>
+          <input class="form-control text-center calc-miles" type="date" id="date">
+        </div>
+
+        <div class="col-xs-6 col-md-6" form-group>
+          <label for="startMiles" class="control-label">Start miles</label>
+          <input class="form-control calc-miles" type="number" min="0" id="startMiles">
+        </div>
+
+        <div class="col-xs-6 col-md-6 form-group">
+          <label for="endMiles" class="control-label">End miles</label>
+          <input class="form-control calc-miles" type="number" min="0" id="endMiles">
+        </div>
+
+        <div class="col-xs-6 col-md-6 form-group">
+          <label class="" for="fuelBought">Fuel bought (£)</label>
+          <input class="form-control calc-miles" type="number" id="fuelBought" min="0">
+        </div>
+
+        <div class="col-xs-6 col-md-6 form-group">
+          <label class="" for="priceUnit">Price per litre</label>
+          <input class="form-control calc-miles" type="number" id="priceUnit" min="0">
+        </div>
+
+        <div class="col-xs-6 col-md-6 form-group ">
+          <span class=" form-control"><label>Mileage =&nbsp;</label><label id="result"></label><label id="mpu">&nbsp;mpl</label></span>
+        </div>
+
+        <div class="col-xs-6 col-md-6 form-group ">
+          <input class="form-control" type="checkbox" checked="checked" value="litres" data-toggle="toggle" data-on="Litres" data-off="Gallons" data-onstyle="primary" data-offstyle="info" id="units" name="UNITS!">
+        </div>
+
+        <div class="col-xs-12 col-md-12 form-group" id="btn-grp-Commit">
+          <button id="btnClear" class="btn btn-warning btn-rwk" >Clear</button>
+          <button id="btnCommit" class="btn btn-success btn-rwk">Commit</button>
+        </div>
+
+        <div class="col-xs-12 col-md-12 form-group" id="btn-grp-Edit">
+          <div class="btn-group">
+            <button class="btn btn-rwk" id="btnCancel">Cancel</button>
+            <button class="btn btn-rwk" id="btnUpdate">Update</button>
+            <button class="btn btn-rwk" data-toggle="modal" data-target="#deleteModal">Delete</button>
+          </div>
+        </div>
+        <!--Modal-->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <p>Data will be deleted.</p>
+                <p></p>
+                <p>Continue?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" id="btnDelete" data-dismiss="modal">Yes</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <div class="col-xs-12 col-md-12 form-group">
+          <div class="canvas-border-rwk" data-uib="media/chartjs" data-ver="0" data-chart-type="Bar" data-chart-func="miles.mileageData" id="mileage-chart"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

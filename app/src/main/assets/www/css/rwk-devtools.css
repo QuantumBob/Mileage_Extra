@@ -1,0 +1,28 @@
+.btn-rwk {
+    width: 80px;
+    margin-left: 4px;
+    margin-right: 4px;
+    border-color: #ccc;
+}
+.btn-image {
+    width: 20px;
+    height: 20px;
+    display: block;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+#rwk-devtools-span1{
+    background-image: url(../res/trash-can.png);
+}
+#rwk-devtools-span2 {
+    background-image: url(../res/add.png);
+}
+#rwk-devtools-span3 {
+    background-image: url(../res/refresh.png);
+}
+#rwk-devtools-span4 {
+    background-image: url(../res/update.png);
+}
+#rwk-devtools-span5 {
+    background-image: url(../res/change.png);
+}
